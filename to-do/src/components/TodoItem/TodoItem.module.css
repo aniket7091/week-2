@@ -1,0 +1,282 @@
+.todo {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 78px;
+  padding: 16px 18px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border: 1px solid #e7e7eb;
+  border-radius: 14px;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.todo:hover {
+  transform: translateY(-2px);
+
+  border-color: #d6d6e8;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Left */
+
+.left {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  min-width: 0;
+}
+
+/* Checkbox */
+
+.checkboxWrapper {
+  position: relative;
+
+  width: 22px;
+  height: 22px;
+
+  flex-shrink: 0;
+
+  cursor: pointer;
+}
+
+.checkboxWrapper input {
+  position: absolute;
+
+  opacity: 0;
+
+  width: 0;
+  height: 0;
+}
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1.5px solid #d1d1d7;
+  border-radius: 7px;
+
+  background: white;
+
+  color: white;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.checkboxWrapper:hover .checkbox {
+  border-color: #6366f1;
+
+  transform: scale(1.05);
+}
+
+.checkboxWrapper input:checked + .checkbox {
+  background: #6366f1;
+
+  border-color: #6366f1;
+
+  transform: scale(1);
+}
+
+/* Task Content */
+
+.taskContent {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.taskText {
+  display: block;
+
+  overflow: hidden;
+
+  color: #222;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease,
+    text-decoration 0.2s ease;
+}
+
+.completed {
+  color: #999;
+
+  text-decoration: line-through;
+
+  text-decoration-thickness: 1px;
+}
+
+/* Meta */
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #aaa;
+
+  font-size: 10px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.statusDot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #f59e0b;
+}
+
+.completedTodo .statusDot {
+  background: #22c55e;
+}
+
+.separator {
+  color: #d2d2d2;
+}
+
+/* Delete */
+
+.delete {
+  position: relative;
+
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 15px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  transition:
+    opacity 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.todo:hover .delete {
+  opacity: 1;
+}
+
+.delete:hover {
+  background: #fff0f0;
+
+  transform: scale(1.05);
+}
+
+/* Custom X icon */
+
+.delete span {
+  position: absolute;
+
+  width: 14px;
+  height: 1.5px;
+
+  background: #999;
+
+  border-radius: 2px;
+}
+
+.delete span:first-child {
+  transform: rotate(45deg);
+}
+
+.delete span:last-child {
+  transform: rotate(-45deg);
+}
+
+.delete:hover span {
+  background: #ef4444;
+}
+
+/* Completed Card */
+
+.completedTodo {
+  background: #fcfcfc;
+
+  border-color: #eeeeee;
+}
+
+.completedTodo:hover {
+  border-color: #e2e2e2;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .todo {
+    min-height: 72px;
+
+    padding: 14px;
+  }
+
+  .taskText {
+    max-width: 180px;
+
+    font-size: 13px;
+  }
+
+  .meta {
+    font-size: 9px;
+  }
+
+  .delete {
+    opacity: 1;
+
+    width: 30px;
+    height: 30px;
+
+    margin-left: 8px;
+  }
+}
